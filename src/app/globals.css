@@ -1,0 +1,347 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+  --accent-color: 237, 41, 112;
+  --accent-alt-color: 237, 41, 112;
+  --font-roboto: 'Roboto', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+  font-family: var(--font-roboto), 'Roboto', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+  font-feature-settings: normal;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Section Styles */
+.section-container {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.section-inner {
+  position: relative;
+  z-index: 10;
+  padding: 6rem 1.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.section-inner-full {
+  position: relative;
+  z-index: 10;
+  padding: 6rem 0;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .section-inner {
+    padding: 8rem 4rem;
+  }
+  
+  .section-inner-full {
+    padding: 8rem 0;
+  }
+}
+
+.section-number {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 8rem;
+  font-weight: 900;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+  .section-number {
+    font-size: 9rem;
+  }
+}
+
+/* Button Styles */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.125rem;
+  font-weight: 500;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: #ED2970;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: rgba(237, 41, 112, 0.9);
+}
+
+.btn-outline {
+  border: 1px solid #081239;
+  color: #081239;
+}
+
+.btn-outline:hover {
+  background-color: #081239;
+  color: white;
+}
+
+.btn-outline-light {
+  border: 1px solid white;
+  color: white;
+}
+
+.btn-outline-light:hover {
+  background-color: white;
+  color: #081239;
+}
+
+/* Theme Variations */
+.section-dark {
+  background-color: #081239;
+  color: white;
+}
+
+.section-light {
+  background-color: white;
+  color: #081239;
+}
+
+.section-alt-dark {
+  background-color: #081239;
+  color: white;
+}
+
+.section-alt-light {
+  background-color: white;
+  color: #081239;
+}
+
+.accent {
+  color: #ED2970;
+}
+
+.accent-alt {
+  color: #ED2970;
+}
+
+/* Grid Pattern */
+.grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(8, 18, 57, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(8, 18, 57, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Group Companies Interactive Cards */
+.group-companies-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  transition: all 0.5s;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.group-company-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(8, 18, 57, 0.2);
+}
+
+.group-company-card:last-child {
+  border-right: 0;
+}
+
+.group-company-card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.group-company-card .card-content {
+  transform-origin: bottom;
+  will-change: transform, opacity;
+}
+
+@media (min-width: 768px) {
+  .group-companies-container {
+    flex-direction: row;
+    height: 500px;
+  }
+  
+  .group-company-card {
+    flex-grow: 1;
+    transition: all 0.5s ease-in-out;
+    height: 100%;
+  }
+  
+  .group-company-card:hover {
+    flex-grow: 3;
+  }
+  
+  .group-company-card:not(:hover) {
+    flex-grow: 0.7;
+  }
+}
+
+/* Timeline styles */
+.timeline-container {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 1px solid rgba(8, 18, 57, 0.2);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: -41px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  background-color: white;
+  border: 4px solid #ED2970;
+}
+
+.timeline-content {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  padding: 1.5rem;
+  border-radius: 0.125rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Side Navigation */
+.side-nav {
+  position: fixed;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(4px);
+  padding: 1rem 0.75rem;
+  border-radius: 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.nav-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-dot.active {
+  height: 30px;
+  border-radius: 15px;
+}
+
+.nav-dot:hover:not(.active) {
+  transform: scale(1.2);
+}
+
+.nav-dot .tooltip {
+  position: absolute;
+  right: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 10px;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #081239;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-dot:hover .tooltip {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .side-nav {
+    right: 1rem;
+  }
+  
+  .nav-dot .tooltip {
+    display: none;
+  }
+}
